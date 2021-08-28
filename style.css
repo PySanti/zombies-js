@@ -1,0 +1,41 @@
+:root {
+    overflow: hidden;
+}
+#button,
+#reset_button {
+    width: 15vw;
+    height: 4vh;
+    font-size: 1.7vh;
+    text-align: center;
+    padding: 10px;
+    background-color: #0f0;
+    position: absolute;
+    border-radius: 20px;
+    left: 2%;
+    top: 5%;
+    transition: transform 0.5s, left 0.5s;
+    user-select: none;
+    cursor: pointer;
+}
+
+#reset_button {
+    left: -20%;
+}
+.cursor_container > * {
+    padding: 30px;
+    background-color: #0f0;
+    position: absolute;
+    border-radius: 50px !important;
+    transition-property: left, top, transform;
+    transition-duration: 0.5s;
+    transform: scale(0.3, 0.3);
+}
+
+:root {
+    background-color: #222;
+}
+
+#button:hover,
+#reset_button:hover {
+    transform: scale(1.2, 1.2);
+}
