@@ -1,10 +1,9 @@
-:root {
+html {
     overflow: hidden;
 }
 #button,
 #reset_button {
     width: 15vw;
-    height: 4vh;
     font-size: 1.7vh;
     text-align: center;
     padding: 10px;

@@ -1,12 +1,15 @@
 "use strict";
 // move status part
+const reset_button = document.getElementById("reset_button");
+const zombies_container = document.getElementById("cursor_container");
+const mouse_status = document.getElementById("mouse__pos");
+const button = document.getElementById("button");
+const random_move_space_diff = 20;
+const random_move_timing = 200;
 let zombieArray = [];
-let reset_button = document.getElementById("reset_button");
-let zombies_container = document.getElementById("cursor_container");
-let mouse_status = document.getElementById("mouse__pos");
-let button = document.getElementById("button");
 let last_zombie_delay = 100;
 let last_zombie_id = 0;
+let mouse__pos = null;
 
 function getRandom(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
@@ -26,7 +29,6 @@ class Zombie {
         )}${getRandom(5, 9)}`;
         this.ref.style.top = `${this.position[1]}px`;
         this.ref.style.transition = `top ${this.delay}ms, left ${this.delay}ms,transform 0.5s `;
-
         this.ref.style.transitionTimingFunction =
             "cubic-bezier(0.44, 0.47, 0.73, 0.72)";
         this.position = position;
@@ -59,7 +61,6 @@ class Zombie {
         this.ref.style.top = `${this.position[1]}px`;
     }
 }
-
 button.addEventListener("click", (event) => {
     if (zombieArray.length === 0) {
         reset_button.style.left = "80%";
@@ -72,9 +73,9 @@ button.addEventListener("click", (event) => {
 });
 
 document.addEventListener("mousemove", (event) => {
-    let new_position = [event.x, event.y];
+    mouse__pos = [event.x, event.y];
     zombieArray.forEach(function (cursor) {
-        cursor.updatePosition(new_position);
+        cursor.updatePosition(mouse__pos);
     });
 });
 
@@ -86,11 +87,12 @@ reset_button.addEventListener("click", () => {
     last_zombie_id = 0;
     reset_button.style.left = "-20%";
 });
+
 window.setInterval(() => {
     zombieArray.forEach((zombie) => {
         zombie.updateRelativePosition(zombie.position, [
-            getRandom(-10, 10),
-            getRandom(-10, 10),
+            getRandom(-random_move_space_diff, random_move_space_diff),
+            getRandom(-random_move_space_diff, random_move_space_diff),
         ]);
     });
-}, 150);
+}, random_move_timing);
