@@ -1,5 +1,5 @@
 # zombies-js
-A very litle 'game' made with js, html and css (first js project), al code made by Santiago De Andrade 08/2021
+A very litle 'game' made with js, html and css (first js project), all the code made by Santiago De Andrade 08/2021
 
 Install : 
 
