@@ -9,6 +9,6 @@ Install :
 Play ?? : type in your terminal
 
 
-    firefox (instalation path)/zombies-js/index.html & ; disown
+    firefox zombies-js/index.html & ; disown
     
     
